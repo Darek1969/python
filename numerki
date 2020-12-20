@@ -1,0 +1,34 @@
+# odpowiedz na zadanie egzaminacyjne 2
+# Darek Wojaczek
+# darekwojaczek@gmail.com
+def wpisany_tekst(tekst):
+    i = 1
+    if tekst == "exit":
+        print(" Zawartość tablicy: ")
+        for i in range((len(numbers))):
+            print(str(numbers[i]))
+            i = i+1
+    else:
+        print ( " Podałeś " + str(len(numbers)) + " liczb(y). Dalej się nie bawię ")
+    tekst1 = "exit"
+    return (tekst1)
+
+numbers = []
+koniec = ""
+liczba = 0
+print(" Witaj bawimy się w tablicę ")
+print("")
+print( "Aby zakończyć zabawę wpisz exit ")
+print("")
+while koniec != "exit":
+    liczba = input ( "podaj liczbę : " )
+    while 1:
+         try:
+             liczba = float (liczba)
+             numbers.append( liczba )   
+             break
+         except ValueError:
+             koniec = wpisany_tekst (liczba)
+             break
+  
+            
