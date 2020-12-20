@@ -1,0 +1,97 @@
+# odpowiedz na zadanie egzaminacyjne 1
+# Darek Wojaczek
+# darekwojaczek@gmail.com
+
+def pole_kola( r ):
+    import math
+    pole = r * r * math.pi
+    return ( pole )
+
+def pole_prostokata ( a, b ):
+    if b == 0:
+        pole = a * a
+    else:
+        pole = a * b
+    return ( pole )
+
+def pole_trojkata ( a,h ):
+    pole = (a * h)/2
+    return ( pole )
+
+print (" Witaj wyliczę dla ciebie pole figury " )
+odp = ""
+pole = -1
+
+while odp != "w":
+    print ( " " )
+    print ("Wybierz figurę ")
+    print ("K - oło ")
+    print ("T - rójkąt")
+    print ("P - rostokąt")
+    print ("W - yjście i koniec zabawy")
+    odp = input ("twój wybór (pamiętaj o klawiszu enter na końcu) ")
+    if odp == "K" or odp =="k":
+         print ( "Wybrałeś  wyliczenie pola koła ")
+         while 1:
+            try:
+                r = float (input ( "podaj promień koła : " ))
+                while r <= 0: # musi być wiKesze niż 0
+                    r = float (input ( "promień koła musi być większy od 0, podaj jeszcze raz: " ))   
+                break
+            except ValueError:
+                print ( "podano błedną wartość, spróbuj jeszcze raz " )
+         pole = pole_kola ( r )
+         nazwa_figury = "koło"
+         
+    elif odp == "T" or odp =="t":
+         print ( "Wybrałeś  wyliczenie pola trójkąta ")
+         while 1:  # pobieranie podstawy do skutku
+            try:
+                a = float (input ( "podaj długość podstawy trójkąta : " ))
+                while a <= 0: # musi być większe niż 0
+                    a = float (input ( "długość podstawy musi być większa od 0, podaj jeszcze raz: " ))   
+                break
+            except ValueError:
+                print ( "podano błedną wartość, spróbuj jeszcze raz " )
+         while 1:   # pobieranie wysokości do skutku
+            try:
+                h = float (input ( "podaj wysokość trójkąta : " ))
+                while h <= 0: # musi być większe niż 0
+                    h = float (input ( "wysokość trójkąta musi być większy od 0, podaj jeszcze raz: " ))   
+                break
+            except ValueError:
+                print ( "podałeś błedną wartość, spróbuj jeszcze raz " )
+         pole = pole_trojkata ( a,h )
+         nazwa_figury = "trójkąt"
+         
+    elif  odp == "P" or odp == "p":
+         print ( "Wybrałeś  wyliczenie pola prostokąta ")
+         b = "a"
+         while 1:  # pobieranie podstawy do skutku
+            try:
+                 a = float (input ( "podaj długość jednego boku prostokąta : " ))
+                 while a <= 0: # musi być większe niż 0
+                    a = float (input ( "długość boku musi być większa od 0, podaj jeszcze raz: " ))   
+                 break
+            except ValueError:
+                print ( "podano błedną wartość, spróbuj jeszcze raz " )
+         
+         b = input ( "podaj długość drugiego boku lub enter jeżeli jest to kwadrat : " )
+         while 1:
+             try:
+                 b = float (b)
+                 break
+             except ValueError:
+                 b = 0
+         pole = pole_prostokata ( a,b )
+         nazwa_figury = "prostokąt"
+    elif odp == "W" or odp =="w": # wyjście z pętli
+         odp = "w"
+    else:
+         print ("")
+         print ("")
+         print ("")
+         print ( " Zły wybór, wybierz jeszcze raz " )
+
+    if pole > 0:
+        print( "Pole figury " + nazwa_figury + " o podanych wartościach wynosi " + str(pole))
