@@ -1,0 +1,34 @@
+# odpowiedz na zadanie egzaminacyjne 5
+# Darek Wojaczek
+# darekwojaczek@gmail.com
+import datetime
+import time
+
+n = -1
+while 1:  # pobieranie podstawy do skutku
+    try:
+        n = int(input("podaj ile sekund ma działać program : "))
+        if n>0:
+            break
+        while n < 0:  # musi być większe niż 0
+            n = int(input("ilość musi być większa od 0, podaj jeszcze raz: "))
+            break
+    except ValueError:
+            print("podano błedną wartość, spróbuj jeszcze raz ")
+i=1
+my_file=open("logs.txt","w")
+for i in range(n):
+    czas = datetime.datetime.now()
+    my_file.write(str(i))
+    my_file.write(" | ")
+    my_file.write(str(czas.strftime("%d %b %Y")))
+    my_file.write(" | ")
+    my_file.write(str(czas.strftime("%H:%M:%S")))
+    my_file.write(" | ")
+    now = datetime.datetime.now().timestamp()
+    my_file.write(str(int(round(now,0))))
+    my_file.write("\n")
+    time.sleep(1)
+    
+
+my_file.close()
