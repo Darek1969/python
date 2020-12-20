@@ -1,0 +1,34 @@
+# odpowiedz na zadanie egzaminacyjne 3
+# Darek Wojaczek
+# darekwojaczek@gmail.com
+zakupy = []
+lista = input ("wpisz liste zakupów, kolejne towary oddziel przecinkami :\n" )
+zakupy = lista.split(",")
+zakupy_lista = {}
+i = 1
+for i in range(len(zakupy)):
+     wpis = zakupy[i]
+     wpis = wpis.upper()
+     if wpis in zakupy_lista:
+        print( wpis + " już istnieje na liście i będzie pominięty ")
+     else:
+         while 1:  # pobieranie ceny produktu
+            try:
+                cena = float (input ( "podaj cenę produktu " + wpis + " : " ))
+                while cena <= 0: # musi być większe niż 0
+                    cena = float (input ( "cena musi być większa od 0, podaj jeszcze raz: " ))   
+                break
+            except ValueError:
+                print ( "podano błedną wartość, spróbuj jeszcze raz " )
+         zakupy_lista[wpis]=cena
+         i = i+1
+print("Do kupienia są następujące rzeczy : ")
+cena_razem = 0
+print ( str ( zakupy_lista ))
+for nazwa,cena in zakupy_lista.items():
+     cena_razem=cena_razem + zakupy_lista[nazwa]
+print( "Za całe zakupy zapłacisz " + str(cena_razem))
+if cena_razem < 100:
+    print("Ze 100 zł zostanie ci jeszcze: " + str( 100 - cena_razem))
+else:
+    print("Masz 100 zł zabraknie ci na zakupy: " + str(cena_razem - 100 ))
