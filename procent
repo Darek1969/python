@@ -1,0 +1,31 @@
+# odpowiedz na zadanie egzaminacyjne 4
+# Darek Wojaczek
+# darekwojaczek@gmail.com
+import random
+
+lista = []
+n = -1
+while 1:  # pobieranie podstawy do skutku
+    try:
+        n = int(input("podaj ile ma być wartości generowanych : "))
+        if n>0:
+            break
+        while n < 0:  # musi być większe niż 0
+            n = int(input("ilość musi być większa od 0, podaj jeszcze raz: "))
+            break
+    except ValueError:
+            print("podano błedną wartość, spróbuj jeszcze raz ")
+for i in range(n):
+    lista.append(random.random())
+    i = i + 1
+lista.sort()
+my_file=open("percent.txt","w")
+i=1
+for i in range(n):
+    procent=int(round(lista[i]*100,1))
+    my_file.write(str(lista[i]))
+    my_file.write(" ; ")
+    my_file.write(str(procent))
+    my_file.write("%\n")
+my_file.close()
+    
